@@ -38,7 +38,7 @@ warnings.filterwarnings("ignore")
 #
 # If the URL is empty or fetches fail, the app falls back to the Streamlit
 # file uploader so you can still use it.
-CSV_URL = "https://gist.githubusercontent.com/Sage94/23cc3e71e0fa1e979c7f56eb9f1127a9/raw/5098b1ee4bfd50b2f99f28e1dde2d37ce9d2e596/transactions.csv"
+CSV_URL = ""
 
 # Optional: password-gate the app (Streamlit Cloud reads from st.secrets).
 # To enable, set ENABLE_PASSWORD_GATE = True AND add to Streamlit Cloud:
@@ -777,7 +777,7 @@ def color_pnl(val):
             return "color: #4A6B3A; font-family: monospace;"
     return "font-family: monospace;"
 
-styled = display_df.style.applymap(color_pnl, subset=["P&L", "Return", "Day P&L"])
+styled = display_df.style.map(color_pnl, subset=["P&L", "Return", "Day P&L"])
 st.dataframe(styled, use_container_width=True, hide_index=True, height=min(480, 50 + len(display_df) * 38))
 
 # ─────────────────────────────────────────────────────────────────────────
